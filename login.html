@@ -1,0 +1,222 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/user.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CINI WORLD | Login</title>
+   
+    
+    <style>
+        *{
+            padding: 0; 
+            margin: 0;
+            text-decoration: none;
+            list-style: none;
+            box-sizing: border-box;
+        }
+        body{
+            background:#F3F3F3;
+        }
+        nav input{
+            padding: 8px 10px;
+            width: 20%;
+            border-radius: 30px;
+            border: 1px solid black;
+            position: absolute;
+            top:15px;
+            left: 350px;
+            -webkit-transition: width 0.4s ease-in-out;
+            transition: width 0.4s ease-in-out;
+        }
+        nav input:focus{
+            width: 40%;
+            outline: none;
+            box-shadow: 0 0 5px #07CB79;
+            border: 2px solid #07CB79;
+        }
+        
+        nav{
+            background: black;
+            height: 60px;
+            width: 100%;
+        }
+        
+        label.logo{
+            font-size: 30px;
+            padding-left:100px;
+            line-height: 60px;
+        }
+        
+        nav ul{
+            float: right;
+            margin-right: 100px;
+        }
+        
+        nav ul li{
+            display: inline-block;
+            line-height: 60px;
+            margin: 0px 25px;
+        }
+        
+        nav ul li a{
+            font-size: 16px;
+            padding: 6px 13px;
+            border-radius: 10px;
+            color: white;
+            font-family: 'Segoe UI';
+            font-weight: bold;
+        }
+
+        nav label{
+            color: white;
+            font-family: 'Segoe UI';
+            font-weight: bold;
+        }
+        
+        nav ul li a:hover{
+            background: #07CB79;
+        }  
+        .devider span::before{
+            content: "New to CINI WORLD? ";
+            position: absolute;
+            bottom: 138px;
+          
+        
+        }      
+        
+        .forgotp span::before{
+            content: "Haven't you remembered your password? ";
+            position: absolute;
+            bottom: 110px;
+           
+        }
+        #demo{
+            color: red;
+            font-size: 13px;
+            position: absolute;
+            bottom: 250px;
+     
+        }
+        #mybtn{
+            margin-top: 20px;
+        }
+        #one{
+            color: red;
+            font-size: 13px;
+            position: absolute; 
+            top: 130px;
+        }
+       .aj fa-exclamation-circle{
+             visibility: visible;
+             position: absolute;
+          
+         }
+     .signup i{
+         visibility: hidden;
+     }
+    .mj fa-exclamation-circle{
+        visibility: visible;
+             position: absolute;
+         transform: translateX(20px);
+    }
+   
+  
+       
+    </style>
+</head>
+<body>
+    <nav>
+    
+        <a href="index.html"><label class='logo'>CINI WORLD</label></a>
+        <input type="text" placeholder="search for films">
+         <ul class="nav_link">
+             <li><a href="signup.html">SignUp</a></li>
+             <li><a href="payment.html"><i class="fa fa-shopping-cart" aria-hidden="true"></i> cart</a></li>
+        </ul>
+    </nav>
+  
+    <form class="signup" >
+        <div class="aj">
+        <h1 align='center'>Login</h1>
+        <p>Email or Mobile Number</p>
+        <i class="fa fa-exclamation-circle" aria-hidden="true" id="a" ></i>
+        <input type="text" placeholder="Email or Mobile Number"  id="email"><br><br>
+        <i class="fa fa-exclamation-circle" aria-hidden="true" id="a" ></i>
+        <i class="fa fa-check-circle" aria-hidden="true" id="c"></i>
+        <p id="one"></p>
+    
+    </div>    
+      <div class="mj">
+        <p>Password</p>
+        <input type="password" placeholder="Password"  id="password"><br>
+        <i class="fa fa-exclamation-circle" aria-hidden="true" id="b" ></i>
+        <p id="demo"></p>
+    </div>
+        <button type="button" onclick="checkInputs()" id="mybtn">Login</button><br><br><br>
+        
+   
+<div class='devider'>
+    <span><a href="signup.html" style="position: absolute;bottom: 138px;left: 190px;">SignUp</a></span>
+</div><br>
+<div class='forgotp' style="line-height: 20px; margin-bottom:0;">
+    <span><a href="forgot_password.html" style="position:absolute;bottom: 80px;left: 20px;"><br> Forgot Password</a></span>
+</div><br>
+<p style="font-size: 12px; position: absolute;bottom: 40px;" >By login, you agree to CINI WORLD's Conditions of Use and Privacy Notice.</p>
+</form>  
+
+
+
+        <!-- fixed footer -->
+    <div class="footer">
+        <a href="#">About us</a> 
+        <a href="#">Condition of Use and Sale</a> 
+        <a href="#">Privacy Notice</a> 
+        <a href="#">Facebook</a> 
+        <a href="#">Twitter</a> 
+        <a href="#">Instagram</a> 
+        <p>&copy;2020 CINI WORLD</p>
+    </div>
+    <script>
+           
+            const Email = document.getElementById('email');
+            const password = document.getElementById('password');
+            const exclamation=document.getElementById('a')
+            const ex=document.getElementById('b')
+            const symbol=document.querySelector('i')
+          const btn = document.getElementById('mybtn')
+          const color=document.getElementById("one")
+          const check=document.getElementById("c")
+
+            function checkInputs(){
+                var x,text;
+                
+                const EmailValue =  Email.value.trim();
+                const passwordValue = password.value.trim();
+               
+                if(EmailValue === ''){x='Email cannot be empty',  Email.style.cssText='border:1px solid red';
+                exclamation.style.cssText='color:red;visibility:visible;position:relative;left:340px;bottom:-21px';color.style.cssText='color:red';}
+                else if(!isEmail(EmailValue)){x='Invalid Email',  Email.style.cssText='border:1px solid red';exclamation.style.cssText='color:red;visibility:visible';color.style.cssText='color:red';}
+                else{x='Input is ok',Email.style.cssText='border:1px solid green';color.style.cssText='color:green';check.style.cssText='color:green;visibility:visible;position:absolute;top: 100px;left:360px';}
+                document.getElementById("one").innerHTML=x;
+               
+
+             
+               
+                if(passwordValue === ''){text='Password cannot be empty', password.style.cssText='border:1px solid red';
+                ex.style.cssText='color:red;visibility:visible;position:absolute;left:360px;top:200px';}
+                document.getElementById("demo").innerHTML=text;
+                
+            }
+            function isEmail(EmailValue) {
+            return /^[a-zA-Z0-9]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/.test(EmailValue);
+            }
+            
+            function isPassword(passwordValue){
+            return /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,20}$/.test(passwordValue);
+            }
+
+
+    </script>
+</body>
+</html>
